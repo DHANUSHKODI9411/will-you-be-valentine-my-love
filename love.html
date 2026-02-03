@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Be My Valentine 🌙💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars"></div>
+
+<!-- Moon -->
+<div class="moon"></div>
+
+<!-- Floating Hearts -->
+<div class="hearts">
+    <span>💖</span><span>💗</span><span>💘</span>
+    <span>💞</span><span>💓</span><span>💖</span>
+</div>
+
+<div class="container">
+    <h1>Hey SANGAMITHRA 🌙💕</h1>
+    <p>Will you be my Valentine?</p>
+
+    <div class="buttons">
+        <button id="yesBtn">YES 💖</button>
+        <button id="noBtn">NO 🙈</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+
+function moveNoButton() {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 300 - 150;
+    noBtn.style.transform = `translate(${x}px, ${y}px) scale(0.6)`;
+    yesBtn.style.transform = "scale(1.4)";
+    yesBtn.style.boxShadow = "0 0 40px #ff4d6d";
+}
+
+// 🎆 Fireworks + 💖 Hearts
+yesBtn.addEventListener("click", (e) => {
+    for (let i = 0; i < 40; i++) {
+        const spark = document.createElement("div");
+        spark.className = "firework";
+        spark.style.left = e.clientX + "px";
+        spark.style.top = e.clientY + "px";
+        spark.style.setProperty("--x", `${Math.random()*400-200}px`);
+        spark.style.setProperty("--y", `${Math.random()*400-200}px`);
+        spark.innerHTML = Math.random() > 0.5 ? "✨" : "💖";
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 1200);
+    }
+
+    setTimeout(() => {
+        window.location.href = "yes.html";
+    }, 1000);
+});
+</script>
+
+</body>
+</html>
